@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <br>
+      <h2>Edit Employee</h2>
+      <div >
+      <form *ngIf="editemployeeForm" [formGroup]="editemployeeForm" (ngSubmit)="update(employee._id, employee)" novalidate>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" [class.is-invalid]="firstName?.invalid && firstName?.touched" 
+            formControlName="firstName" class="form-control">
+                <div *ngIf="firstName?.errors && firstName?.touched">
+                  <div class="alert alert-danger" *ngIf="firstName?.errors?.required">First Name is required</div>
+                  <div class="alert alert-danger" *ngIf="firstName?.errors?.minlength">First Name must be at least 3 characters</div>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" [class.is-invalid]="lastName?.invalid && lastName?.touched" 
+            formControlName="lastName" class="form-control">
+                <div *ngIf="lastName?.errors && lastName?.touched">
+                  <div class="alert alert-danger" *ngIf="lastName?.errors?.required">Last Name is required</div>
+                  <div class="alert alert-danger" *ngIf="lastName?.errors?.minlength">Last Name must be at least 3 characters</div>
+                </div>
+        </div>
+    
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="text" [class.is-invalid]="salary?.invalid && salary?.touched" 
+            formControlName="salary" class="form-control">
+                <div *ngIf="salary?.touched && salary?.errors">
+                  <div class="alert alert-danger" *ngIf="salary?.errors?.required">Salary is required</div>
+                  <div class="alert alert-danger" *ngIf="salary?.errors?.pattern">Salary must be numbers</div>
+                </div><br>
+        </div>
+        <button class="btn btn-primary" [disabled]="editemployeeForm.invalid" type="submit">Update form</button>
+      </form>
+    </div>
+      <div class="alert alert-danger" *ngIf="errorMsg">
+        {{errorMsg}}
+      </div>
+    </div>
