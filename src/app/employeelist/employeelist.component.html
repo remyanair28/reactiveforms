@@ -1,0 +1,27 @@
+<br>
+<mat-card>
+  <h2>List of Employees</h2>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Edit/Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees">
+          <td (click)="selectemployee(emp)">{{emp._id}}</td>
+          <td>{{emp.firstName}}</td>
+          <td>{{emp.lastName}}</td>
+          <td>{{emp.salary}}</td>
+          <td>
+            <button mat-raised-button color="primary"(click)="editEmployee(emp)">Edit</button>
+            <button mat-raised-button color="accent" (click)="deleteEmployee(emp)">Delete</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>
