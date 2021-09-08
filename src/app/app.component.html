@@ -1,0 +1,34 @@
+<!-- <mat-toolbar color="primary" >
+  <div class="button-row">
+    <span>Employee Application</span>
+    <span routerLink="/home">Home</span>
+    <a mat-flat-button color="primary" routerLink="/addemployee"><mat-icon>add</mat-icon>Add Employee</a>
+    <a mat-flat-button color="primary" routerLink="/employeelist">View Employee</a>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>  -->
+
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="header">
+  <div>Employee Application</div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <!-- Sidenav -->
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+    [fixedTopGap]>
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" routerLink="/addemployee">
+        <mat-icon>add</mat-icon> Add Employee
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/employeelist">
+        <mat-icon>format_list_bulleted</mat-icon> View Employees
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Main content -->
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
